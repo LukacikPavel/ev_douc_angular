@@ -1,0 +1,21 @@
+<h2>{{title}}</h2>
+<br>
+<table class="table table-hover">
+  <thead>
+  <tr><th>ID</th><th>Meno</th><th>Priezvisko</th><th>Stav</th></tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let student of students" (click)="tableRowClick(student)" (dblclick)="editUserClicked(student)">
+ <td>{{student.id}}</td>
+ <td>{{student.meno}}</td>
+ <td>{{student.priezvisko}}</td>
+ <td>{{student.getAktivnyString()}}</td>
+  </tr>
+  </tbody>
+ </table>
+ <p *ngIf="selectedStudent">Vybraný študent: {{selectedStudent.meno}}</p>
+ <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#studentEditModal" (click)="addUserButtonClicked()">
+    Pridať používateľa
+  </button>
+<app-student-edit (savedStudent)="editedStudentSaved($event)" [student]="editedStudent" [actionWithStudent]="action"></app-student-edit>
