@@ -33,6 +33,7 @@ export class StudentEditComponent implements OnChanges {
   onSubmit() {
     this.savedStudent.emit(this.student);
     $('#studentEditModal').modal('hide');
+    $('#studentDeleteModal').modal('hide');
   }
-  
+
 }

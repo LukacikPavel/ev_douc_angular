@@ -1,6 +1,7 @@
 <!-- Modal -->
-<form (ngSubmit)="onSubmit()" #myForm="ngForm">
-<div class="modal fade" id="studentEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form (ngSubmit)="onSubmit()" #myForm="ngForm" *ngIf="student">
+  <div class="modal fade" id="studentEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -10,17 +11,46 @@
           </button>
         </div>
         <div class="modal-body form-group">
-          <p>Hodnota modelu: {{actualStudent}}</p>
-          <label>Meno: </label><input class="form-control" type="text" [(ngModel)]="student.meno" name="studentName" required>
-          <label>Priezvisko: </label><input class="form-control" type="text" [(ngModel)]="student.priezvisko" name="studentSurname" required>
-          <label>StupenStudia: </label><input class="form-control" type="text" [(ngModel)]="student.stupenStudia" name="studentStupenStudia" required>
-          <label>Telefon: </label><input class="form-control" type="text" [(ngModel)]="student.telefon" name="studentTelefon" required>
-          <label>Email: </label><input class="form-control" type="text" [(ngModel)]="student.email" name="studentEmail" required>
-          <label>Aktivny: </label><input class="form-control" type="checkbox" [(ngModel)]="student.aktivny" name="studentAktivny">
+          <label>Meno: </label><input class="form-control" type="text" [(ngModel)]="student.meno" name="studentName"
+            required>
+          <label>Priezvisko: </label><input class="form-control" type="text" [(ngModel)]="student.priezvisko" name="studentSurname"
+            required>
+          <label>Stupeň štúdia: </label><br>
+          <input type="radio" name="stupen" value="ZŠ" [(ngModel)]="student.stupenStudia" required> Základná škola<br>
+          <input type="radio" name="stupen" value="SŠ" [(ngModel)]="student.stupenStudia" required> Stredná škola<br>
+          <input type="radio" name="stupen" value="VŠ" [(ngModel)]="student.stupenStudia" required> Vysoká škola<br>
+          <label>Telefón: </label><input class="form-control" type="text" [(ngModel)]="student.telefon" name="studentTelefon"
+            required>
+          <label>Email: </label><input class="form-control" type="text" [(ngModel)]="student.email" name="studentEmail"
+            required>
+          <label>Aktívny: </label><input class="form-control" type="checkbox" [(ngModel)]="student.aktivny" name="studentAktivny">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Zrušiť</button>
           <button type="submit" class="btn btn-primary" [disabled]="!myForm.form.valid">Ulož</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Modal -->
+<form (ngSubmit)="onSubmit()" #myForm="ngForm" *ngIf="student">
+<div class="modal fade" id="studentDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Odobranie študenta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Odobrať študenta {{student.meno}} {{student.priezvisko}}? 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Nie</button>
+          <button type="submit" class="btn btn-primary">Áno</button>
         </div>
       </div>
     </div>
