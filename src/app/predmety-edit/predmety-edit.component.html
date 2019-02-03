@@ -1,0 +1,51 @@
+<!-- Modal -->
+<form (ngSubmit)="onSubmit()" #myForm="ngForm" *ngIf="predmet">
+  <div class="modal fade" id="predmetEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body form-group">
+          <label>Názov: </label><input class="form-control" type="text" [(ngModel)]="predmet.nazov" name="predmetName"
+            required>
+          <label>Stupeň štúdia: </label><br>
+          <input type="radio" name="stupenStudia" value="ZŠ" [(ngModel)]="predmet.stupenStudia" required> Základná škola<br>
+          <input type="radio" name="stupenStudia" value="SŠ" [(ngModel)]="predmet.stupenStudia" required> Stredná škola<br>
+          <input type="radio" name="stupenStudia" value="VŠ" [(ngModel)]="predmet.stupenStudia" required> Vysoká škola<br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Zrušiť</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!myForm.form.valid">Ulož</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Modal -->
+<form (ngSubmit)="onSubmit()" #myForm="ngForm" *ngIf="predmet">
+    <div class="modal fade" id="predmetDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Odobranie študenta</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Odobrať predmet {{predmet.nazov}} ({{predmet.stupenStudia}})? 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Nie</button>
+              <button type="submit" class="btn btn-primary">Áno</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>

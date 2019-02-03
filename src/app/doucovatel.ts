@@ -1,10 +1,10 @@
-import { DoucovanyPredmet } from './doucovanyPredmet';
+import { Predmet } from './predmet';
 
 export class Doucovatel {
     constructor (
         public meno: string,
         public priezvisko: string,
-        public predmety?: DoucovanyPredmet[],
+        public predmety?: Predmet[],
         public id?: number,
         public aktivny: boolean = true
     ){}

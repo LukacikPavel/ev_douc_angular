@@ -1,4 +1,4 @@
-export class DoucovanyPredmet {
+export class Predmet {
     constructor(
         public nazov: string,
         public stupenStudia: string,

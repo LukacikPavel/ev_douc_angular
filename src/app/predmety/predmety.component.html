@@ -1,0 +1,35 @@
+<div *ngIf="stavKomunikacie=='error'" class="alert alert-danger">
+  <strong>Pozor!</strong> Komunikácia so serverom sa nepodarila.
+</div>
+<div *ngIf="stavKomunikacie=='added' || stavKomunikacie=='updated' || stavKomunikacie=='deleted'" class="alert alert-success">
+  <strong>OK!</strong> {{hlaska}}
+</div>
+<h2>{{title}}</h2>
+<label *ngIf="selectedPredmet">Zvolený predmet: {{selectedPredmet.nazov}} {{selectedPredmet.id}}</label><br>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#predmetEditModal" (click)="addPredmetButtonClicked()"
+  style="float: right;">
+  Pridať predmet
+</button>
+<!-- Button trigger modal -->
+<button *ngIf="selectedPredmet" type="button" class="btn btn-danger" data-toggle="modal" data-target="#predmetDeleteModal"
+  (click)="deletePredmetButtonClicked(selectedPredmet)">
+  Odobrať zvolený predmet
+</button>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Názov</th>
+      <th>Stupeň štúdia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let predmet of predmety" (click)="tableRowClick(predmet)" (dblclick)="editPredmetButtonClicked(predmet)">
+      <td>{{predmet.id}}</td>
+      <td>{{predmet.nazov}}</td>
+      <td>{{predmet.stupenStudia}}</td>
+    </tr>
+  </tbody>
+</table>
+<app-predmety-edit (savedPredmet)="editedPredmetSaved($event)" [predmet]="editedPredmet" [actionWithPredmet]="action"></app-predmety-edit>
